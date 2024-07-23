@@ -1,12 +1,13 @@
 """
-title: Anthropic Manifold Pipeline
-author: justinh-rahb
-date: 2024-06-20
+title: Anthropic Manifold Pipeline With Proxy URL input
+author: liongkj
+date: 2024-07-23
 version: 1.3
 license: MIT
 description: A pipeline for generating text and processing images using the Anthropic API.
 requirements: requests, anthropic
 environment_variables: ANTHROPIC_API_KEY
+environment_variables:
 """
 
 import os
