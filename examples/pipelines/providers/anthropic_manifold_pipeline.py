@@ -23,7 +23,7 @@ from utils.pipelines.main import pop_system_message
 class Pipeline:
     class Valves(BaseModel):
         ANTHROPIC_API_KEY: str = ""
-        base_url: Optional[str] = None
+        PROXY_BASE_URL: Optional[str] = None
 
     def __init__(self):
         self.type = "manifold"
