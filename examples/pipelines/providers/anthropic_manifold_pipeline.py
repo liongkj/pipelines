@@ -30,9 +30,11 @@ class Pipeline:
         self.name = "anthropic/"
 
         self.valves = self.Valves(
-            **{"ANTHROPIC_API_KEY": os.getenv("ANTHROPIC_API_KEY", "your-api-key-here")}
+            **{"ANTHROPIC_API_KEY": os.getenv("ANTHROPIC_API_KEY", "your-api-key-here"),
+              "PROXY_BASE_URL": os.getenv("PROXY_BASE_URL","your-proxy-url-here")}
         )
-        self.client = Anthropic(api_key=self.valves.ANTHROPIC_API_KEY)
+        self.client = Anthropic(api_key=self.valves.ANTHROPIC_API_KEY,
+                               base_url=self.valves.PROXY_BASE_URL if self.valves.PROXY_BASE_URL else None)
 
     def get_anthropic_models(self):
         return [
@@ -51,7 +53,8 @@ class Pipeline:
         pass
 
     async def on_valves_updated(self):
-        self.client = Anthropic(api_key=self.valves.ANTHROPIC_API_KEY)
+        self.client = Anthropic(api_key=self.valves.ANTHROPIC_API_KEY,
+                               base_url=self.valves.PROXY_BASE_URL if self.valves.PROXY_BASE_URL else None)
         pass
 
     def pipelines(self) -> List[dict]:
