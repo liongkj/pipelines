@@ -14,7 +14,7 @@ import os
 from anthropic import Anthropic, RateLimitError, APIStatusError, APIConnectionError
 
 from schemas import OpenAIChatMessage
-from typing import List, Union, Generator, Iterator
+from typing import List, Union, Generator, Iterator, Optional
 from pydantic import BaseModel
 import requests
 
